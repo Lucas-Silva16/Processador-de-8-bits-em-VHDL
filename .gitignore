@@ -14,3 +14,4 @@ vivado*.backup.log
 *.runs/
 *.sim/
 *.cache/
+*.wcfg
