@@ -54,13 +54,14 @@ begin
                 when "0100" => Resultado <= (Operando1 xor Operando2);
                 when "0101" => Resultado <= std_logic_vector(shift_right(unsigned(Operando1), 1));--bitshift para a direita
                 when "0110" => Resultado <= std_logic_vector(shift_left(unsigned(Operando1), 1));--bitshift para a esquerda
-                when "0111" => Resultado <= std_logic_vector(unsigned(Operando1)+unsigned(Operando2));
-                when "1000" => Resultado <= std_logic_vector(unsigned(Operando1)-unsigned(Operando2)) ;
-                when "1001" => if (Operando1 <  Operando2) then E_FLAG(0) <= '1'; end if;
-                               if (Operando1 <= Operando2) then E_FLAG(1) <= '1'; end if;
-                               if (Operando1 =  Operando2) then E_FLAG(2) <= '1'; end if;
-                               if (Operando1 >= Operando2) then E_FLAG(3) <= '1'; end if;
-                               if (Operando1 >  Operando2) then E_FLAG(4) <= '1'; end if;
+                when "0111" => Resultado <= std_logic_vector(signed(Operando1) + signed(Operando2));
+                when "1000" => Resultado <= std_logic_vector(signed(Operando1) - signed(Operando2));
+                when "1001" => 
+                    if (signed(Operando1) <  signed(Operando2)) then E_FLAG(0) <= '1'; end if;
+                    if (signed(Operando1) <= signed(Operando2)) then E_FLAG(1) <= '1'; end if;
+                    if (signed(Operando1) =  signed(Operando2)) then E_FLAG(2) <= '1'; end if;
+                    if (signed(Operando1) >= signed(Operando2)) then E_FLAG(3) <= '1'; end if;
+                    if (signed(Operando1) >  signed(Operando2)) then E_FLAG(4) <= '1'; end if;
                 when others => Resultado <= (others => '0');
             end case;
     end process;

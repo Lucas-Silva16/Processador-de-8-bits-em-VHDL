@@ -20,10 +20,11 @@ end RAM;
 
 architecture Behavioral of RAM is
 
+type memoria is array (0 to 255) of std_logic_vector (7 downto 0);
+signal MemEndereco : memoria;
+
 begin
     process(CLK,Endereco,WR)
-    type memoria is array (0 to 255) of std_logic_vector (7 downto 0);
-    variable MemEndereco:memoria;
     begin
     if WR = '0' then
         DadosOUT <= MemEndereco(to_integer(unsigned(Endereco)));
@@ -31,7 +32,7 @@ begin
         DadosOUT <= (others => 'X');
     end if;
     if rising_edge(CLK) and WR = '1' then
-        MemEndereco(to_integer(unsigned(Endereco))) := DadosIN;
+        MemEndereco(to_integer(unsigned(Endereco))) <= DadosIN;
     end if;    
     end process;
 end Behavioral;

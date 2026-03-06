@@ -82,7 +82,6 @@ begin
             when "10101" => controlo <= "0000" & '0' & "00" & '0' & '0' & "010" & '0' & "100"; -- JG constante
             when "10110" => controlo <= "0000" & '0' & "00" & '0' & '0' & "001" & '0' & "000"; -- JMP constante
             
-            -- Default (Outros / NOP)
             when others  => controlo <= "0000" & '0' & "00" & '0' & '0' & "000" & '0' & "000"; -- NOP
         end case;
     end process;    
