@@ -1,103 +1,101 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity Mobo is
-Port ( 
-           CLK   : in STD_LOGIC;
-           RESET : in STD_LOGIC;
-           PIN   : in STD_LOGIC_VECTOR (7 downto 0);
+    Port ( 
+           CLK   : in  STD_LOGIC;
+           RESET : in  STD_LOGIC;
+           PIN   : in  STD_LOGIC_VECTOR (7 downto 0);
            POUT  : out STD_LOGIC_VECTOR (7 downto 0)
          );
-  
 end Mobo;
 
 architecture Behavioral of Mobo is
 
+    -- 1. Declaração do Componente Processador
     component Processador is
-    Port(
-           CLK       : in STD_LOGIC;
-           RESET     : in STD_LOGIC;
-           PIN       : in STD_LOGIC_VECTOR (7 downto 0);
-           POUT      : out STD_LOGIC_VECTOR (7 downto 0);
-           opcode    : in STD_LOGIC_VECTOR (4 downto 0);
-           Constante : in STD_LOGIC_VECTOR (7 downto 0);
-           SEL_R_in  : in STD_LOGIC;
-           Dados_M   : in STD_LOGIC_VECTOR (7 downto 0); 
-           WR        : out STD_LOGIC;                    
-           Endereco  : out STD_LOGIC_VECTOR (7 downto 0);
-           Dados_W   : out STD_LOGIC_VECTOR (7 downto 0) 
-         );
+        Port(
+            CLK       : in  STD_LOGIC;
+            RESET     : in  STD_LOGIC;
+            PIN       : in  STD_LOGIC_VECTOR (7 downto 0);
+            POUT      : out STD_LOGIC_VECTOR (7 downto 0);
+            opcode    : in  STD_LOGIC_VECTOR (4 downto 0);
+            Constante : in  STD_LOGIC_VECTOR (7 downto 0);
+            SEL_R_in  : in  STD_LOGIC;
+            Dados_M   : in  STD_LOGIC_VECTOR (7 downto 0); 
+            WR        : out STD_LOGIC;                    
+            Endereco  : out STD_LOGIC_VECTOR (7 downto 0);
+            Dados_W   : out STD_LOGIC_VECTOR (7 downto 0) 
+        );
     end component;
     
+    -- 2. Declaração do Componente RAM (Memória de Dados)
     component RAM is
-        Port ( DadosIN : in STD_LOGIC_VECTOR (7 downto 0);
-           Endereco : in STD_LOGIC_VECTOR (7 downto 0);
-           WR : in STD_LOGIC;
-           CLK : in STD_LOGIC;
-           DadosOUT : out std_logic_vector (7 downto 0));
+        Port ( 
+            DadosIN  : in  STD_LOGIC_VECTOR (7 downto 0);
+            Endereco : in  STD_LOGIC_VECTOR (7 downto 0);
+            WR       : in  STD_LOGIC;
+            CLK      : in  STD_LOGIC;
+            DadosOUT : out STD_LOGIC_VECTOR (7 downto 0)
+        );
     end component;
     
+    -- 3. Declaração do Componente ROM (Memória de Instruções)
     component ROM_Memoria_Instrucoes is
-        Port ( Endereco : in STD_LOGIC_VECTOR (7 downto 0);
-           opcode : out STD_LOGIC_VECTOR (4 downto 0);
-           SEL_R : out STD_LOGIC;
-           Constante : out STD_LOGIC_VECTOR (7 downto 0)
-           );
+        Port ( 
+            Endereco  : in  STD_LOGIC_VECTOR (7 downto 0);
+            opcode    : out STD_LOGIC_VECTOR (4 downto 0);
+            SEL_R     : out STD_LOGIC;
+            Constante : out STD_LOGIC_VECTOR (7 downto 0)
+        );
     end component;
     
--- fios da mem de instrucoes    
-signal Endereco : std_logic_vector (7 downto 0);
-signal opcode : std_logic_vector (4 downto 0);
-signal Constante : std_logic_vector(7 downto 0);
-signal SEL_R : std_logic;
-
---fios da mem de dados
-signal WR : std_logic;
-signal Dados_M : std_logic_vector (7 downto 0); -- Fio da RAM para o Processador
-signal Dados_W : std_logic_vector (7 downto 0); -- Fio do Processador para a RAM
--- a constante ja ta em cima na ROM
+    -- Fios de ligação interna (sinais)
+    -- Prefixo s_ para distinguir facilmente o que é um fio interno
+    signal s_Endereco  : std_logic_vector (7 downto 0);
+    signal s_opcode    : std_logic_vector (4 downto 0);
+    signal s_Constante : std_logic_vector (7 downto 0);
+    signal s_SEL_R     : std_logic;
+    
+    signal s_WR        : std_logic;
+    signal s_Dados_M   : std_logic_vector (7 downto 0);
+    signal s_Dados_W   : std_logic_vector (7 downto 0);
 
 begin
 
-s_Processador : Processador 
-    Port map (
-           CLK=>CLK ,      
-           RESET=>RESET ,    
-           PIN =>PIN ,      
-           POUT =>POUT ,     
-           opcode =>opcode ,   
-           Constante=>Constante , 
-           SEL_R_in=>SEL_R , 
-           Dados_M   =>Dados_M ,
-           WR      =>WR ,         
-           Endereco  =>Endereco ,
-           Dados_W  =>Dados_W  
-         );
+    -- Instanciação do Processador
+    Inst_Processador : Processador 
+        port map (
+            CLK       => CLK,       
+            RESET     => RESET,    
+            PIN       => PIN,       
+            POUT      => POUT,      
+            opcode    => s_opcode,   
+            Constante => s_Constante, 
+            SEL_R_in  => s_SEL_R, 
+            Dados_M   => s_Dados_M,
+            WR        => s_WR,         
+            Endereco  => s_Endereco,
+            Dados_W   => s_Dados_W  
+        );
 
-s_RAM : RAM
-    port map(
-           DadosIN =>Dados_W ,
-           Endereco =>Endereco ,
-           WR =>WR ,
-           CLK =>CLK ,
-           DadosOUT =>Dados_M
-           );
-           
-s_ROM_Memoria_Instrucoes : ROM_Memoria_Instrucoes
-    port map( Endereco =>Endereco ,
-           opcode =>opcode ,
-           SEL_R =>SEL_R ,
-           Constante =>Constante
-           );
-
+    -- Instanciação da RAM (Memória de Dados)
+    Inst_RAM : RAM
+        port map (
+            DadosIN  => s_Dados_W,
+            Endereco => s_Constante, -- IMPORTANTE: A RAM é endereçada pela Constante
+            WR       => s_WR,
+            CLK      => CLK,
+            DadosOUT => s_Dados_M
+        );
+            
+    -- Instanciação da ROM (Memória de Instruções)
+    Inst_ROM : ROM_Memoria_Instrucoes
+        port map ( 
+            Endereco  => s_Endereco, -- IMPORTANTE: A ROM é endereçada pelo PC
+            opcode    => s_opcode,
+            SEL_R     => s_SEL_R,
+            Constante => s_Constante
+        );
 
 end Behavioral;

@@ -49,16 +49,22 @@ begin
         wait for clk_period/2;
     end process;
 
-    stim_proc: process
+stim_proc: process
     begin
-        s_RESET <= '1';
-        wait for 20 ns; 
+        -- Teste 1: Caminho Normal
+        s_RESET <= '1'; wait for 200 ns; s_RESET <= '0';
+        s_PIN <= "00000101"; -- Metemos o 5
+        wait for 3000 ns;    -- Deixamos correr
         
-        s_RESET <= '0';
+        -- Teste 2: Caminho Negativo
+        s_RESET <= '1'; wait for 200 ns; s_RESET <= '0';
+        s_PIN <= "11110000"; -- Metemos o -16
+        wait for 1000 ns;    -- Deixamos correr
         
-        s_PIN <= "00000101"; 
-        
-        wait for 2000 ns;
+        -- Teste 3: Caminho da RAM
+        s_RESET <= '1'; wait for 200 ns; s_RESET <= '0';
+        s_PIN <= "00111100"; -- Metemos o 60
+        wait for 2000 ns;    -- Deixamos correr
         
         wait;
     end process;

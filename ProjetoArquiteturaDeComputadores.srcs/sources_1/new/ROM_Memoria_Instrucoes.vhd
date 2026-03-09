@@ -83,7 +83,7 @@ begin
             when "00100001" => instrucao <= "10110000011000"; -- 33: JMP 24
             when "00100010" => instrucao <= "00011000000010"; -- 34: LD RA, [2]
             when "00100011" => instrucao <= "00001000000000"; -- 35: STP RA
-                when "00100100" => instrucao <= "10110000100100"; -- 36: JMP 36
+            when "00100100" => instrucao <= "10110000100100"; -- 36: JMP 36
             when others => instrucao <= "00000000000000"; -- mete o resto a zeros
         end case;
     end process;    
