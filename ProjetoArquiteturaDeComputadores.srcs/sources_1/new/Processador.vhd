@@ -105,7 +105,7 @@ architecture Behavioral of Processador is
              );   
     end component;
     
-    -- Sinais Internos (Fios) - Usando prefixo s_ para evitar conflitos com as Portas
+    -- Sinais Internos 
     signal s_Resultado : std_logic_vector(7 downto 0);
     signal s_Operando1 : std_logic_vector(7 downto 0);
     signal s_Operando2 : std_logic_vector(7 downto 0);    
@@ -190,7 +190,7 @@ begin
                    ESCR_P   => s_ESCR_P,
                    SEL_DATA => s_SEL_Data,
                    ESCR_R   => s_ESCR_R,
-                   WR       => WR,       -- Liga diretamente à porta de saída
+                   WR       => WR,       
                    SEL_PC   => s_SEL_PC,
                    ESCR_F   => s_ESCR_F,
                    SEL_F    => s_SEL_F
@@ -204,7 +204,6 @@ begin
                    ESCR_PC   => s_ESCR_PC
                  );
              
-    -- Ligação final do dado a escrever na RAM
     Dados_W <= s_Operando1;        
 
 end Behavioral;

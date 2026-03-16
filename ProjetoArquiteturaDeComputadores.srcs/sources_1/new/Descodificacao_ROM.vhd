@@ -17,7 +17,6 @@ end Descodificacao_ROM;
 
 architecture Behavioral of Descodificacao_ROM is
     
-    -- Sinal interno que guarda a palavra de controlo de 16 bits
     signal controlo : std_logic_vector (15 downto 0);
 
 begin
@@ -61,7 +60,6 @@ begin
         end case;
     end process;    
 
-    -- Atribuições concorrentes às portas de saída (Fora do processo)
     SEL_ALU  <= controlo (15 downto 12);
     ESCR_P   <= controlo (11);
     SEL_DATA <= controlo (10 downto 9);

@@ -14,7 +14,6 @@ end Registos_A_e_B;
 
 architecture Behavioral of Registos_A_e_B is
 
-    -- Inicialização a zero para evitar estados 'U' na simulação
     signal R_a : std_logic_vector (7 downto 0) := (others => '0');
     signal R_b : std_logic_vector (7 downto 0) := (others => '0');
 
@@ -32,7 +31,6 @@ begin
         end if;
     end process;
 
-    -- Leitura contínua (assíncrona)
     Operando1 <= R_a;
     Operando2 <= R_b;
 

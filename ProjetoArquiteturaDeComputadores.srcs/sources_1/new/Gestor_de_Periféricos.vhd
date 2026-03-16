@@ -15,11 +15,8 @@ end Gestor_Perifericos;
 architecture Behavioral of Gestor_Perifericos is
 begin
 
-    -- Leitura assíncrona: quando ESCR_P é '0', os dados de PIN passam para Dados_IN
-    -- Caso contrário, colocamos a zeros por segurança
     Dados_IN <= PIN when ESCR_P = '0' else (others => '0');
 
-    -- Escrita síncrona: guarda o Operando1 em POUT na subida do CLK se ESCR_P for '1'
     process(CLK)
     begin
         if rising_edge(CLK) then

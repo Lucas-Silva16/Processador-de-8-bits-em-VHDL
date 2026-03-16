@@ -84,7 +84,7 @@ begin
             when "00100010" => instrucao <= "00011000000010"; -- 34: LD RA, [2]
             when "00100011" => instrucao <= "00001000000000"; -- 35: STP RA
             when "00100100" => instrucao <= "10110000100100"; -- 36: JMP 36
-            when others => instrucao <= "00000000000000"; -- mete o resto a zeros
+            when others => instrucao <= "XXXXXXXXXXXXXX"; -- mete o resto a zeros
         end case;
     end process;    
     opcode    <= instrucao(13 downto 9); -- 5 bits de Opcode

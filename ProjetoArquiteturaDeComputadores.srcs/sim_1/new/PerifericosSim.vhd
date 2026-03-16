@@ -16,7 +16,7 @@ end PerifericosSim;
 
 architecture Behavioral of PerifericosSim is
 
-    component Gestor_De_Perifericos
+    component Gestor_Perifericos
     Port ( 
         ESCR_P    : in  STD_LOGIC;
         PIN       : in  STD_LOGIC_VECTOR (7 downto 0);
@@ -43,7 +43,7 @@ architecture Behavioral of PerifericosSim is
 
 begin
 
-    uut: Gestor_De_Perifericos PORT MAP (
+    uut: Gestor_Perifericos PORT MAP (
         ESCR_P    => ESCR_P,
         PIN       => PIN,
         POUT      => POUT,

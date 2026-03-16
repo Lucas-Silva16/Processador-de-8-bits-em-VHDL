@@ -12,7 +12,6 @@ end Mobo;
 
 architecture Behavioral of Mobo is
 
-    -- 1. Declaração do Componente Processador
     component Processador is
         Port(
             CLK       : in  STD_LOGIC;
@@ -29,7 +28,6 @@ architecture Behavioral of Mobo is
         );
     end component;
     
-    -- 2. Declaração do Componente RAM (Memória de Dados)
     component RAM is
         Port ( 
             DadosIN  : in  STD_LOGIC_VECTOR (7 downto 0);
@@ -40,7 +38,6 @@ architecture Behavioral of Mobo is
         );
     end component;
     
-    -- 3. Declaração do Componente ROM (Memória de Instruções)
     component ROM_Memoria_Instrucoes is
         Port ( 
             Endereco  : in  STD_LOGIC_VECTOR (7 downto 0);
@@ -51,7 +48,6 @@ architecture Behavioral of Mobo is
     end component;
     
     -- Fios de ligação interna (sinais)
-    -- Prefixo s_ para distinguir facilmente o que é um fio interno
     signal s_Endereco  : std_logic_vector (7 downto 0);
     signal s_opcode    : std_logic_vector (4 downto 0);
     signal s_Constante : std_logic_vector (7 downto 0);
@@ -63,7 +59,6 @@ architecture Behavioral of Mobo is
 
 begin
 
-    -- Instanciação do Processador
     Inst_Processador : Processador 
         port map (
             CLK       => CLK,       
@@ -79,20 +74,18 @@ begin
             Dados_W   => s_Dados_W  
         );
 
-    -- Instanciação da RAM (Memória de Dados)
     Inst_RAM : RAM
         port map (
             DadosIN  => s_Dados_W,
-            Endereco => s_Constante, -- IMPORTANTE: A RAM é endereçada pela Constante
+            Endereco => s_Constante, 
             WR       => s_WR,
             CLK      => CLK,
             DadosOUT => s_Dados_M
         );
             
-    -- Instanciação da ROM (Memória de Instruções)
     Inst_ROM : ROM_Memoria_Instrucoes
         port map ( 
-            Endereco  => s_Endereco, -- IMPORTANTE: A ROM é endereçada pelo PC
+            Endereco  => s_Endereco, 
             opcode    => s_opcode,
             SEL_R     => s_SEL_R,
             Constante => s_Constante
