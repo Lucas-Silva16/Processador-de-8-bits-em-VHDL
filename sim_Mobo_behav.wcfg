@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sim_Mobo_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="sim_Mobo" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="205.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="298.901 ns"></ZoomEndTime>
+      <Cursor1Time time="263.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="128"></NameColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/sim_Mobo/clk_period" type="other">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/s_CLK" type="logic">
+      <obj_property name="ElementShortName">s_CLK</obj_property>
+      <obj_property name="ObjectShortName">s_CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/s_RESET" type="logic">
+      <obj_property name="ElementShortName">s_RESET</obj_property>
+      <obj_property name="ObjectShortName">s_RESET</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/s_PIN" type="array">
+      <obj_property name="ElementShortName">s_PIN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_PIN[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/s_POUT" type="array">
+      <obj_property name="ElementShortName">s_POUT[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_POUT[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_PC/contagem" type="array">
+      <obj_property name="ElementShortName">contagem[7:0]</obj_property>
+      <obj_property name="ObjectShortName">contagem[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_ROM/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_ROM/Endereco" type="array">
+      <obj_property name="ElementShortName">Endereco[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Endereco[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_ROM/Constante" type="array">
+      <obj_property name="ElementShortName">Constante[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Constante[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_ROM/SEL_R" type="logic">
+      <obj_property name="ElementShortName">SEL_R</obj_property>
+      <obj_property name="ObjectShortName">SEL_R</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_ALU/Operando1" type="array">
+      <obj_property name="ElementShortName">Operando1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Operando1[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_ALU/Operando2" type="array">
+      <obj_property name="ElementShortName">Operando2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Operando2[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_ALU/Resultado" type="array">
+      <obj_property name="ElementShortName">Resultado[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Resultado[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_RF/S_FLAG" type="logic">
+      <obj_property name="ElementShortName">S_FLAG</obj_property>
+      <obj_property name="ObjectShortName">S_FLAG</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim_Mobo/uut/Inst_Processador/Inst_PC/ESCR_PC" type="logic">
+      <obj_property name="ElementShortName">ESCR_PC</obj_property>
+      <obj_property name="ObjectShortName">ESCR_PC</obj_property>
+   </wvobject>
+</wave_config>
