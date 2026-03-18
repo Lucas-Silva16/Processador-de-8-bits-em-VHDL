@@ -1,4 +1,4 @@
-# 🚀 Processador de 8 bits em VHDL
+#  Processador de 8 bits em VHDL
 
 ![VHDL](https://img.shields.io/badge/Language-VHDL-orange)
 ![Tools](https://img.shields.io/badge/Tools-Vivado_ML_Edition-blue)
@@ -11,7 +11,7 @@ O projeto aborda desde a criação dos blocos lógicos fundamentais até à sua 
 
 ---
 
-## 🎯 Objetivos
+##  Objetivos
 * **Conceção:** Criar um processador capaz de executar um conjunto específico de instruções.
 * **Modelação:** Desenhar módulos internos como ALU, Registos, PC e Descodificador.
 * **Integração:** Desenvolver a estrutura *Top-Level* (Motherboard) interligando Processador, ROM (Instruções) e RAM (Dados).
@@ -19,7 +19,7 @@ O projeto aborda desde a criação dos blocos lógicos fundamentais até à sua 
 
 ---
 
-## ⚙️ Arquitetura do Sistema
+##  Arquitetura do Sistema
 
 ### 1. O Processador (Core)
 O núcleo do sistema é composto pelos seguintes módulos essenciais:
@@ -36,7 +36,7 @@ A nível superior, o processador é instanciado com:
 
 ---
 
-## ✅ Resultados e Discussão
+##  Resultados e Discussão
 A validação foi feita através de três rotinas principais no Testbench:
 
 | Rotina | Descrição | Resultado Esperado |
@@ -49,14 +49,14 @@ A validação foi feita através de três rotinas principais no Testbench:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 * **Linguagem:** VHDL
 * **Ambiente de Desenvolvimento:** Xilinx Vivado ML Edition
 * **Hardware:** FPGA Artix-7 (Nexys A7-100T ou A7-50T)
 
 ---
 
-## 📂 Estrutura de Ficheiros
+##  Estrutura de Ficheiros
 * `/src`: Ficheiros fonte VHDL.
 * `/sim`: Testbenches e ficheiros de simulação.
 * `/docs`: Documentação adicional e diagramas.
